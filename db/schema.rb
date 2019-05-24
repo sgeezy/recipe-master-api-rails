@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_013140) do
+ActiveRecord::Schema.define(version: 2019_05_24_185139) do
 
   create_table "favorite_recipes", force: :cascade do |t|
     t.integer "type"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2019_05_10_013140) do
     t.string "url"
     t.string "image"
     t.integer "upvotes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
