@@ -3,6 +3,7 @@
 module Api
   module V1
     class FavoriteRecipesController < ApplicationController
+      before_action :authorize_access_request!
       before_action :set_favorite_recipe, only: %i[show update destroy]
 
       # GET /favorite_recipes
