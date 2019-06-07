@@ -8,7 +8,7 @@ module Api
 
       # GET /favorite_recipes
       def index
-        @favorite_recipes = FavoriteRecipe.all
+        @favorite_recipes = current_user.favorite_recipes
 
         render json: @favorite_recipes
       end
@@ -21,7 +21,7 @@ module Api
       # POST /favorite_recipes
       def create
         puts favorite_recipe_params
-        @favorite_recipe = FavoriteRecipe.new(favorite_recipe_params)
+        @favorite_recipe = current_user.favorite_recipes.build(favorite_recipe_params)
 
         if @favorite_recipe.save
           render json: @favorite_recipe, status: :created
@@ -48,7 +48,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_favorite_recipe
-        @favorite_recipe = FavoriteRecipe.find(params[:id])
+        @favorite_recipe = current_user.favorite_recipes.find(params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
