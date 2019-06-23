@@ -19,9 +19,9 @@ module Api
       end
 
       def destroy
-        session = JWTSessions::Session.new(payload: payload)
+        session = JWTSessions::Session.new(refresh_by_access_allowed: true)
+        tokens = session.login
         session.flush_by_access_payload
-        render json: :ok
       end
     end
   end
