@@ -30,6 +30,7 @@ gem 'rack-cors'
 
 group :production do
   gem 'pg'
+  gem 'rack-cors'
 end
 
 group :development, :test do
