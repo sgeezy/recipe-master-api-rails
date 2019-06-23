@@ -7,11 +7,19 @@
 
 # cors = ''
 # cors = ENV.fetch('CORS_ORIGINS') if Rails.env.development?
-cors = 'http://localhost:8080'
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins cors, 'https://vigilant-kirch-a55168.netlify.com/'
+    origins 'http://localhost:8080'
+
+    resource '*',
+      headers: :any,
+      credentials: true,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+  allow do
+    origins 'https://vigilant-kirch-a55168.netlify.com/'
 
     resource '*',
       headers: :any,
